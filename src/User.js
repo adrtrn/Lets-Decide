@@ -1,15 +1,18 @@
 import React, { PropTypes } from 'react'
 import { auth } from './firebase'
+import './css/User.css'
 
 const User = ({user}) => {
   return (
-    <div>
-      <img src={user.photoURL} alt={user.displayName}/>
+    <div className="User">
+      <div className="User-photo">
+        <img src={user.photoURL} alt={user.displayName}/>
+      </div>
       <h3>{user.displayName}</h3>
-    </div>
-    <button onClick={auth.signOut()}>
+      <button onClick={() => auth.signOut()}>
       Sign Out
-    </button>
+     </button>
+    </div>
   )
 }
 

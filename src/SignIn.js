@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { auth, googleAuthProvider } from './firebase'
+import { auth, facebookAuthProvider, googleAuthProvider } from './firebase'
 
 class SignIn extends Component {
   render () {
@@ -7,6 +7,9 @@ class SignIn extends Component {
       <div className='SignIn'>
         <button onClick={() => auth.signInWithPopup(googleAuthProvider)}>
           Sign in with Google
+        </button>        
+        <button onClick={() => auth.signInWithPopup(facebookAuthProvider)}>
+          Login with Facebook
         </button>
       </div>
     )

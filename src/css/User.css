@@ -1,0 +1,17 @@
+.User {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  border: solid 1px #d9d9d9;
+  flex: 1;
+}
+
+.User-photo img{
+   padding: 25px;
+  max-height: 150px;  
+}
+
+.User h3 {
+  font-size: 1.5em;
+  padding: 1em;
+}
