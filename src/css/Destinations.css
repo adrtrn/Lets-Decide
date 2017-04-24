@@ -1,0 +1,6 @@
+.Destinations-Container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}

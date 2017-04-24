@@ -4,14 +4,14 @@ import './css/User.css'
 
 const User = ({user}) => {
   return (
-    <div className="User">
-      <div className="User-photo">
-        <img src={user.photoURL} alt={user.displayName}/>
+    <div className='User-container'>
+      <div className='User-photo'>
+        <img src={user.photoURL} alt={user.displayName} />
       </div>
       <h3>{user.displayName}</h3>
       <button onClick={() => auth.signOut()}>
-      Sign Out
-     </button>
+        Sign Out
+      </button>
     </div>
   )
 }

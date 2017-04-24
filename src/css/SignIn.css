@@ -1,0 +1,19 @@
+
+.SignIn {
+  height: 300px;
+  width: 300px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+img {
+  max-width: 250px;
+}
+
+img:active {
+  opacity: .8;
+}
+
+.fbIMG {
+  width: 240px;
+}

@@ -1,0 +1,23 @@
+.Destination-Form {
+  height: 6em;
+  margin: auto;
+  padding: .5em;
+}
+
+.Destination-Form input {
+  height: 3em;
+  text-align: center;
+  font-size: .6em;
+  width: 25em;
+  border: solid 1px #d9d9d9;
+  margin-right: .5em;
+  margin-bottom: .3em;
+}
+
+.Destination-Form button {
+  margin-top: .5em;
+  height: 2.5em;
+  background: skyblue;
+  color: #2d2d2d;
+  border-color: transparent;
+}
