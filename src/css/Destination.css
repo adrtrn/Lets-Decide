@@ -3,10 +3,13 @@
 .Destination-Container {
   border: solid 1px #d9d9d9;
   border-radius: 5px;
-  padding: 1em;
+  padding: .41em;
   margin: auto;
   margin-top: 1em;
-  width: 33%;
+  width: 325px;
+  height: 7em;
+  display: flex;
+  flex-direction: column;
 }
 
 .Destination-Container li {
@@ -18,27 +21,29 @@ h3 {
   font-family: "Roboto", sans-serif;
   font-size: 1em;
   font-weight: 300;
-  margin-bottom: 0em;
-}
+/*  margin-bottom: -.1em;
+*/}
 
 .Destination-Container a {
   font-size: .7em;
   text-decoration: none;
-  margin-top: -2em;
+  margin-top: -1em;
   color: #585858;
 }
 
 .Destination-Container p {
   font-size: .6em;
+  color: #585858;
 }
 
 .destructive {
-  background: #D43F3F;
+  background: #DC3D24;
   color: #fff;
+  
 }
 
 .positive {
-  background: #6A9A1F;
+  background: #50d07d;
   color: #fff;
 }
 

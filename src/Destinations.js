@@ -28,6 +28,14 @@ class Destinations extends Component {
             .remove()
   }
 
+  handleDelete (key) {
+    const currentUser = this.props.user
+    database.ref('/destinations')
+            .child(key)
+            .remove()
+  }
+
+
   render () {
     const { user, destinations } = this.props
     return (
@@ -39,6 +47,7 @@ class Destinations extends Component {
               user={user}
               handleSelect={() => this.handleSelect(key)}
               handleDeselect={() => this.handleDeselect(key)}
+              handleDelete={() => this.handleDelete(key)}
             />
           })
         }

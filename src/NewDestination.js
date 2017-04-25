@@ -16,7 +16,7 @@ class NewDestination extends Component {
   handleSubmit (event) {
     event.preventDefault()
     this.destinationRef.push({ name: this.state.name, destinationURL: this.state.destinationURL })
-    this.setState({ name: '', destinationURL: '' })
+    this.setState({ name: ''})
   }
 
   render () {
@@ -37,6 +37,7 @@ class NewDestination extends Component {
         />
         <button onClick={this.handleSubmit} disabled={!name}>ADD DESTINATION</button>
       </form>
+
     )
   }
 }

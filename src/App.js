@@ -11,10 +11,12 @@ class App extends Component {
     super(props)
     this.state = {
       currentUser: null,
+      channels: null,
       destinations: null
     }
 
     this.destinationRef = database.ref('/destinations')
+    this.channelRef = database.ref('/channels')
   }
 
   componentDidMount () {
@@ -24,21 +26,22 @@ class App extends Component {
       this.destinationRef.on('value', (snapshot) => {
         this.setState({ destinations: snapshot.val() })
       })
+
+      this.channelRef.on('value', (snapshot) => {
+        this.setState({ channels: snapshot.val() })
+      })
     })
   }
 
   render () {
-    const { currentUser, destinations } = this.state
+    const { currentUser, channels, destinations } = this.state
 
     return (
       <div className='App'>
-        <header className='App-header'>
-          <h1>Picky</h1>
-        </header>
         { !currentUser && <SignIn /> }
-        {
-          currentUser &&
+        { currentUser &&
             <div>
+              <h1>Picky</h1>
               <User user={currentUser} />
               <NewDestination />
               <Destinations destinations={destinations} user={currentUser} />
