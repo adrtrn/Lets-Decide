@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Destination from './Destination'
 import map from 'lodash/map'
 import { database } from './firebase'
@@ -16,7 +17,6 @@ class Destinations extends Component {
             .child('votes')
             .child(currentUser.uid)
             .set(currentUser.displayName)
-            .set(currentUser.photoURL)
   }
 
   handleDeselect (key) {
@@ -29,13 +29,11 @@ class Destinations extends Component {
   }
 
   handleDelete (key) {
-    const currentUser = this.props.user
+    confirm("Are you sure you want to delete this suggestion?")
     database.ref('/destinations')
             .child(key)
             .remove()
   }
-
-
   render () {
     const { user, destinations } = this.props
     return (

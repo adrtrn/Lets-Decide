@@ -1,10 +1,13 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './css/Destination.css'
+import FontAwesome from 'react-fontawesome'
 
 class Destination extends Component {
   render () {
-    const { post, name, destinationURL, user, votes, handleSelect, handleDeselect, handleDelete } = this.props
+    const { name, type, destinationURL, user, votes, handleSelect, handleDeselect, handleDelete } = this.props
     const userHasSelected = votes && Object.keys(votes).includes(user.uid)
+    const userCanDelete = this.props.creator === this.props.user.displayName
 
     Object.count = (votes) => {
       var count = 0, vote
@@ -15,14 +18,23 @@ class Destination extends Component {
     }
     var count = Object.count(votes)
 
+
     return (
       <article className='Destination-Container'>
-        <h3>{ name }</h3>
-        <a target='_blank' href={destinationURL}>{ destinationURL} </a>
+        { userCanDelete && 
+          <button className='destroy' onClick={handleDelete}>
+            <FontAwesome
+              name='trash'
+              size='2x'
+            />
+          </button> 
+        }
+        <h3>{ name } { destinationURL && <a target='_blank' href={destinationURL}>website</a> } </h3>
+        <p> { type } </p>
         <p>Votes: { count }</p>
         { userHasSelected
           ? <button className='destructive' onClick={handleDeselect}>Actually... Nevermind</button>
-          : <button className='positive' onClick={handleSelect}>Let's Go</button>
+          : <button className='positive' onClick={handleSelect}>Let's Go Here</button>
         }
       </article>
     )
@@ -30,8 +42,8 @@ class Destination extends Component {
 }
 
 Destination.propTypes = {
-  name: PropTypes.string,
-  destinationURL: PropTypes.string
+  user: PropTypes.object,
+  destinationRef: PropTypes.object,
 }
 
 export default Destination

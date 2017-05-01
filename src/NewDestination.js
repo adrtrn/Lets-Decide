@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { database } from './firebase'
 import './css/NewDestination.css'
 
@@ -7,7 +8,10 @@ class NewDestination extends Component {
     super()
     this.state = {
       name: '',
-      destinationURL: ''
+      type: '',
+      destinationURL: '',
+      creator: '',
+      successMessage: ''
     }
     this.destinationRef = database.ref('/destinations')
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -15,8 +19,14 @@ class NewDestination extends Component {
 
   handleSubmit (event) {
     event.preventDefault()
-    this.destinationRef.push({ name: this.state.name, destinationURL: this.state.destinationURL })
-    this.setState({ name: ''})
+    this.destinationRef.push({ 
+      name: this.state.name, 
+      type: this.state.type, 
+      destinationURL: this.state.destinationURL, 
+      creator: this.props.user.displayName 
+    })
+    this.setState({ name: '', type: '', destinationURL: ''})
+    this.setState({ successMessage: 'The Suggestion was Successfully Added'})
   }
 
   render () {
@@ -27,7 +37,13 @@ class NewDestination extends Component {
           type='text'
           value={this.name}
           placeholder='Destination'
-          onChange={(event) => this.setState({ name: event.target.value })}
+          onChange={(event) => this.setState({ name: event.target.value, successMessage: '' })}
+        />
+        <input
+          type='text'
+          value={this.type}
+          placeholder='Type of Establishment'
+          onChange={(event) => this.setState({ type: event.target.value })}
         />
         <input
           type='text'
@@ -35,14 +51,15 @@ class NewDestination extends Component {
           placeholder='Destination URL (optional)'
           onChange={(event) => this.setState({ destinationURL: event.target.value })}
         />
-        <button onClick={this.handleSubmit} disabled={!name}>ADD DESTINATION</button>
+        <button onClick={this.handleSubmit} disabled={!name}>ADD SUGGESTION</button>
+        <p> { this.state.successMessage } </p>
       </form>
-
     )
   }
 }
 
 NewDestination.propTypes = {
+  user: PropTypes.object,
   destinationRef: PropTypes.object
 }
 

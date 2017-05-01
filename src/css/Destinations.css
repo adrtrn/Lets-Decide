@@ -2,6 +2,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 1em;
+  margin-top: .3em;
   background: #fff;
 }
