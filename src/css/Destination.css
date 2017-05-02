@@ -27,15 +27,25 @@ h3 {
   color: #585858;
 }
 
-.Destination-Container p {
+.Destination-Type {
   font-size: .6em;
   color: #585858;
+  margin-top: 2em;
 }
 
-.destroy {
+.Destination-Votes {
+  font-size: .7em;
+  color: #585858;
+  margin-top: 0em;
+}
+
+
+a.destroy {
   width: 20%;
-  margin: -.5em 0 0 24em;
+  float: right;
+  margin: -3em 0 0 30em;
   color: gray;
+  background: transparent;
 }
 
 .destructive {

@@ -5,9 +5,9 @@ import FontAwesome from 'react-fontawesome'
 
 class Destination extends Component {
   render () {
-    const { name, type, destinationURL, user, votes, handleSelect, handleDeselect, handleDelete } = this.props
+    const { name, type, destinationURL, user, votes, handleSelect, handleDeselect, handleDelete, upVote } = this.props
     const userHasSelected = votes && Object.keys(votes).includes(user.uid)
-    const userCanDelete = this.props.creator === this.props.user.displayName
+    const userCanDelete = this.props.creator === this.props.user.uid
 
     Object.count = (votes) => {
       var count = 0, vote
@@ -21,17 +21,11 @@ class Destination extends Component {
 
     return (
       <article className='Destination-Container'>
-        { userCanDelete && 
-          <button className='destroy' onClick={handleDelete}>
-            <FontAwesome
-              name='trash'
-              size='2x'
-            />
-          </button> 
+        <h3>{ name } { destinationURL && <a target='_blank' href={destinationURL}>website</a> } </h3>        { userCanDelete && 
+          <a className='destroy' onClick={handleDelete}><FontAwesome name='trash' size='2x' /></a> 
         }
-        <h3>{ name } { destinationURL && <a target='_blank' href={destinationURL}>website</a> } </h3>
-        <p> { type } </p>
-        <p>Votes: { count }</p>
+        <p className="Destination-Type"> { type } </p>
+        <p className="Destination-Votes">votes: { count }</p>
         { userHasSelected
           ? <button className='destructive' onClick={handleDeselect}>Actually... Nevermind</button>
           : <button className='positive' onClick={handleSelect}>Let's Go Here</button>

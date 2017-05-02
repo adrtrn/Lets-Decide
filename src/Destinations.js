@@ -29,10 +29,11 @@ class Destinations extends Component {
   }
 
   handleDelete (key) {
-    confirm("Are you sure you want to delete this suggestion?")
-    database.ref('/destinations')
-            .child(key)
-            .remove()
+    if (confirm("Are you sure you want to delete this suggestion?")) {
+      database.ref('/destinations')
+              .child(key)
+              .remove()
+    } 
   }
   render () {
     const { user, destinations } = this.props
@@ -56,7 +57,7 @@ class Destinations extends Component {
 
 Destinations.propTypes = {
   user: PropTypes.object,
-  destinationsRef: PropTypes.object,
+  destinationRef: PropTypes.object,
   destinations: PropTypes.object
 }
 

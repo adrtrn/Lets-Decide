@@ -11,7 +11,8 @@ class App extends Component {
     super(props)
     this.state = {
       currentUser: null,
-      destinations: null
+      destinations: null,
+      members: null
     }
     this.destinationRef = database.ref('/destinations')
   }
@@ -27,8 +28,7 @@ class App extends Component {
   }
 
   render () {
-    const { currentUser, destinations } = this.state
-
+    const { currentUser, destinations, members } = this.state
     return (
       <div className='App'>
         { !currentUser && <SignIn /> }
