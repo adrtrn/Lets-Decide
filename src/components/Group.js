@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import { database } from '../firebase'
 import map from 'lodash/map'
+import User from './User'
+import NewDestination from './NewDestination'
+import Destinations from './Destinations'
 
 class Group extends Component {
   constructor (props) {
     super(props)
     this.state = {
       name: '',
-      members: ''
+      members: '',
+      destinations: ''
     }
     this.groupRef = database.ref(`/groups/${this.props.groupID}/`)
+    this.destinationRef = database.ref('/destinations')
   }
 
   componentDidMount () {
@@ -19,13 +24,17 @@ class Group extends Component {
       this.groupRef.child('members').on('value', (snapshot) => {
         this.setState({ members: snapshot.val() })
       })    
+
+      this.destinationRef.on('value', (snapshot) => {
+        this.setState({ destinations: snapshot.val() })
+      })
     })     
   }
 
   render () {
     const { handleRemove } = this.props
     const { members, name } = this.state
-  
+    
     return (
       <div>
         <h4>

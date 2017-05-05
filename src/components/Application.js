@@ -5,6 +5,7 @@ import User from './User'
 import NewGroup from './NewGroup'
 import Groups from './Groups'
 
+
 class Application extends Component {
   constructor (props) {
     super(props)
