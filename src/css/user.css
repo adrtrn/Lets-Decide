@@ -1,0 +1,11 @@
+.user-container {
+  height: 5em;
+  width: 100%;
+  display: flex;
+  flex: row;
+}
+
+.user-photo img {
+  max-height: 80px;
+}
+
