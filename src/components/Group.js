@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { database } from '../firebase'
-import map from 'lodash/map'
-import User from './User'
-import NewDestination from './NewDestination'
-import Destinations from './Destinations'
+import NewElection from './NewElection'
+import Elections from './Elections'
 
 class Group extends Component {
   constructor (props) {
@@ -11,45 +9,42 @@ class Group extends Component {
     this.state = {
       name: '',
       members: '',
-      destinations: ''
+      elections: ''
     }
     this.groupRef = database.ref(`/groups/${this.props.groupID}/`)
-    this.destinationRef = database.ref('/destinations')
+    this.electionsRef = database.ref('/elections')
   }
 
   componentDidMount () {
+    const { groupID } = this.props
     this.groupRef.child('name').on('value', (snapshot) => {
       this.setState({ name: snapshot.val() })
      
       this.groupRef.child('members').on('value', (snapshot) => {
         this.setState({ members: snapshot.val() })
       })    
-
-      this.destinationRef.on('value', (snapshot) => {
-        this.setState({ destinations: snapshot.val() })
+      this.electionsRef.orderByChild('group').equalTo(groupID).on('value', (snapshot) => {
+        this.setState({ elections: snapshot.val() })
       })
     })     
   }
 
-  render () {
+  render () {<div></div>
     const { handleRemove } = this.props
-    const { members, name } = this.state
-    
+    const { members, name, elections } = this.state
     return (
-      <div>
+      <section>
         <h4>
           {name}
           <button onClick={handleRemove}>Leave Group</button>
         </h4>
-          <h6>{Object.keys(members).length} Member(s): </h6>
-          <ul>
-            {
-              map(Object.keys(members), (member, key) => {
-                return <li key={key}>{member}</li>
-              })
-            }
-          </ul>
-      </div>
+        <NewElection 
+          group={this.groupRef.key}
+        />
+        <Elections 
+          elections={elections}
+        />
+      </section>
     )
   }
 }
