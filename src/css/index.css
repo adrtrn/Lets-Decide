@@ -7,3 +7,15 @@ body {
 button {
   color: red;
 }
+
+input {
+  border: solid 1px black;
+}
+
+div {
+  border-top: solid 1px #707070;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: #303030;
+}

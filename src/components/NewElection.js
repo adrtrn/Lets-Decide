@@ -28,7 +28,7 @@ class NewElection extends Component {
       <form>
         <input 
           type="text"
-          value={this.name}
+          value={ga name}
           placeholder="Name of the Election"
           onChange={(event) => this.setState({ name: event.target.value })}
         />

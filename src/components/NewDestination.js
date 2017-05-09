@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { database } from './firebase'
+import { database } from '../firebase'
 
 class NewDestination extends Component {
   constructor () {
@@ -7,8 +7,7 @@ class NewDestination extends Component {
     this.state = {
       name: '',
       type: '',
-      destinationURL: '',
-      creator: '',
+      electionID: '',
       successMessage: ''
     }
     this.destinationRef = database.ref('/destinations')
@@ -20,15 +19,14 @@ class NewDestination extends Component {
     this.destinationRef.push({ 
       name: this.state.name, 
       type: this.state.type, 
-      destinationURL: this.state.destinationURL,
-      creator: this.props.user.uid
+      electionID: this.props.election,
     })
-    this.setState({ name: '', type: '', destinationURL: ''})
+    this.setState({ name: '', type: '', election: ''})
     this.setState({ successMessage: 'The Suggestion was Successfully Added'})
   }
 
   render () {
-    const { name, type, destinationURL } = this.state
+    const { name, destinationURL } = this.state
     return (
       <form className='Destination-Form'>
         <input
@@ -43,18 +41,11 @@ class NewDestination extends Component {
           placeholder='Type of Establishment (required)'
           onChange={(event) => this.setState({ type: event.target.value })}
         />
-        <input
-          type='text'
-          value={this.destinationURL}
-          placeholder='Destination URL (optional)'
-          onChange={(event) => this.setState({ destinationURL: event.target.value })}
-        />
-        <button onClick={this.handleSubmit} disabled={!name, !type}>ADD SUGGESTION</button>
+        <button onClick={this.handleSubmit} disabled={!name}>ADD SUGGESTION</button>
         <p className="success"> { this.state.successMessage } </p>
       </form>
     )
   }
 }
-
 
 export default NewDestination
