@@ -7,7 +7,7 @@ class NewDestination extends Component {
     this.state = {
       name: '',
       type: '',
-      electionID: '',
+      election: '',
       successMessage: ''
     }
     this.destinationRef = database.ref('/destinations')
@@ -19,7 +19,7 @@ class NewDestination extends Component {
     this.destinationRef.push({ 
       name: this.state.name, 
       type: this.state.type, 
-      electionID: this.props.election,
+      election: this.props.election,
     })
     this.setState({ name: '', type: '', election: ''})
     this.setState({ successMessage: 'The Suggestion was Successfully Added'})
