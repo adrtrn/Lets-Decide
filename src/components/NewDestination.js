@@ -6,7 +6,6 @@ class NewDestination extends Component {
     super()
     this.state = {
       name: '',
-      type: '',
       election: '',
       successMessage: ''
     }
@@ -18,10 +17,9 @@ class NewDestination extends Component {
     event.preventDefault()
     this.destinationRef.push({ 
       name: this.state.name, 
-      type: this.state.type, 
       election: this.props.election,
     })
-    this.setState({ name: '', type: '', election: ''})
+    this.setState({ name: '', election: ''})
     this.setState({ successMessage: 'The Suggestion was Successfully Added'})
   }
 
@@ -35,13 +33,7 @@ class NewDestination extends Component {
           placeholder='Destination (required)'
           onChange={(event) => this.setState({ name: event.target.value, successMessage: '' })}
         />
-        <input
-          type='text'
-          value={this.type}
-          placeholder='Type of Establishment (required)'
-          onChange={(event) => this.setState({ type: event.target.value })}
-        />
-        <button onClick={this.handleSubmit} disabled={!name}>ADD SUGGESTION</button>
+        <button onClick={this.handleSubmit} disabled={!name}>add</button>
         <p className="success"> { this.state.successMessage } </p>
       </form>
     )

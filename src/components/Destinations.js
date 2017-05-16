@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import Destination from './Destination'
 import map from 'lodash/map'
-import { database } from '../firebase'
 
 class Destinations extends Component {
   constructor (props) {
-    super(props)
+    super()
   }
 
   render () {
     const { destinations } = this.props
     return (
       <section className='Destinations-Container'>
+        <h6>Suggestions:</h6>
         {
           map(destinations, (destination, key) => {
             return <Destination

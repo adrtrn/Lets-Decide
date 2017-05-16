@@ -33,10 +33,8 @@ class User extends Component {
         <div className='user-photo'>
           <img src={user.photoURL} alt={user.displayName}/>
         </div>
-        <h3>{user.displayName}</h3>
-        <button onClick={() => auth.signOut()}>
-          Logout
-        </button>
+        <h3 className="user-name">{user.displayName}</h3>
+        <button onClick={() => auth.signOut()}>Logout</button>
       </div>
     )
   }

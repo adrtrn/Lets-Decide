@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Group from './Group'
 import map from 'lodash/map'
+import NewGroup from './NewGroup'
 import { database } from '../firebase'
 
 class Groups extends Component {
@@ -23,9 +24,10 @@ class Groups extends Component {
   }
 
   render () {
-    const { groups } = this.props 
+    const { groups, user } = this.props 
     return (
       <div>
+        <NewGroup user={user} />
         <h6>GROUPS:</h6>
         {
           map(groups, (group, key) => {

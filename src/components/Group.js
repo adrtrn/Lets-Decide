@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { database } from '../firebase'
-import NewElection from './NewElection'
-import Elections from './Elections'
+import NewEvent from './NewEvent'
+import Events from './Events'
 
 class Group extends Component {
   constructor (props) {
@@ -9,10 +9,10 @@ class Group extends Component {
     this.state = {
       name: '',
       members: '',
-      elections: ''
+      events: ''
     }
     this.groupRef = database.ref(`/groups/${this.props.groupID}/`)
-    this.electionsRef = database.ref('/elections')
+    this.eventsRef = database.ref('/events')
   }
 
   componentDidMount () {
@@ -23,26 +23,26 @@ class Group extends Component {
       this.groupRef.child('members').on('value', (snapshot) => {
         this.setState({ members: snapshot.val() })
       })    
-      this.electionsRef.orderByChild('group').equalTo(groupID).on('value', (snapshot) => {
-        this.setState({ elections: snapshot.val() })
+      this.eventsRef.orderByChild('group').equalTo(groupID).on('value', (snapshot) => {
+        this.setState({ events: snapshot.val() })
       })
     })     
   }
 
-  render () {<div></div>
+  render () {
     const { handleRemove } = this.props
-    const { members, name, elections } = this.state
+    const { name, events } = this.state
     return (
       <section>
         <h4>
           {name}
-          <button onClick={handleRemove}>Leave Group</button>
+          <button onClick={handleRemove}>Leave </button>
         </h4>
-        <NewElection 
+        <NewEvent 
           group={this.groupRef.key}
         />
-        <Elections 
-          elections={elections}
+        <Events 
+          events={events}
         />
       </section>
     )

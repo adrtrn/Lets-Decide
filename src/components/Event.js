@@ -3,36 +3,36 @@ import NewDestination from './NewDestination'
 import Destinations from './Destinations'
 import { database } from '../firebase'
 
-class Election extends Component {
+class Event extends Component {
   constructor (props) {
     super(props)
     this.state = {
       destinations: '',
-      electionID: ''
+      eventID: ''
     }
     this.destinationsRef = database.ref('/destinations/')
 
   }
- // DESTIONATIONS: ONLY GET THE DESTINATION IF IT'S CHILD ELECTION ID IS THE SAME AS THE ELECTION ID CREATED BY FIREBASE
+ // DESTIONATIONS: ONLY GET THE DESTINATION IF IT'S CHILD Event ID IS THE SAME AS THE ELECTION ID CREATED BY FIREBASE
   componentDidMount () {
-    const { electionID } = this.props
-    this.destinationsRef.orderByChild('electionID').equalTo(electionID).on('value', (snapshot) => {
+    const { eventID } = this.props
+    this.destinationsRef.orderByChild('event').equalTo(eventID).on('value', (snapshot) => {
       this.setState({ destinations: snapshot.val() })
     })
 
   }
 
   render () {
-    const { electionID, name } = this.props 
+    const { eventID, name } = this.props 
     const { destinations } = this.state
     return (
-      <ul>
+      <article className="event">
         <h4>Event: {name}</h4>
-        <NewDestination election={electionID}/>
+        <NewDestination event={eventID}/>
         <Destinations destinations={destinations} />
-      </ul>
+      </article>
     )
   }
 }
 
-export default Election
+export default Event

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { database } from '../firebase'
 
-class NewElection extends Component {
+class NewEvent extends Component {
   constructor (props) {
     super(props) 
     this.state = {
       name: '',
     }
-    this.electionRef = database.ref('elections')
+    this.eventsRef = database.ref('events')
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -15,7 +15,7 @@ class NewElection extends Component {
     event.preventDefault()
     const { group } = this.props
     
-    this.electionRef.push({
+    this.eventsRef.push({
       name: this.state.name,
       group: group
     })
@@ -28,14 +28,16 @@ class NewElection extends Component {
       <form>
         <input 
           type="text"
-          value={ga name}
-          placeholder="Name of the Election"
+          value={name}
+          placeholder="Add Event"
           onChange={(event) => this.setState({ name: event.target.value })}
         />
-        <button onClick={this.handleSubmit}>Create Election</button>
+        <button onClick={this.handleSubmit} disabled={!name}>
+          +
+        </button>
       </form>
     )
   }
 }
 
-export default NewElection
+export default NewEvent

@@ -5,17 +5,43 @@ body {
 }
 
 button {
-  color: red;
+  color: tomato;
+  background: transparent;
+  font-size: 1em;
 }
 
 input {
   border: solid 1px black;
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-right: 1em;
+  margin-left: 2em;
 }
 
-div {
-  border-top: solid 1px #707070;
+
+h1 {
+  text-align: center;
 }
 
 h1,h2,h3,h4,h5,h6 {
   color: #303030;
+}
+
+article h3 {
+  font-size: .8em;
+  color: #909090;
+}
+
+section {
+}
+
+article h4 {
+  font-size: 1em;
+  color: #808080;
+}
+
+article.election {
+  border-top: solid 1px black;
 }

@@ -1,11 +1,20 @@
 .user-container {
-  height: 5em;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 3.5em;
+  width: 30%;
   display: flex;
   flex: row;
+  border: solid red;
 }
 
 .user-photo img {
-  max-height: 80px;
+  max-height: 60px;
 }
 
+.user-name {
+}
+
+button {
+  border: none;
+}
