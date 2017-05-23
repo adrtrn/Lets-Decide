@@ -1,0 +1,11 @@
+.destinations-container { 
+  border: solid 1px #707070;
+  position: absolute;
+  margin-left: 20em;
+  margin-top: -22.5em;
+  padding: 20px;
+  width: 45em;
+  height: 80%;
+  top: 0;
+}
+

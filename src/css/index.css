@@ -8,16 +8,18 @@ button {
   color: tomato;
   background: transparent;
   font-size: 1em;
+  margin-left: 0em;
 }
 
 input {
   border: solid 1px black;
-  height: 30px;
-  width: 200px;
+  height: 2em;
+  width: 18em;
   border-radius: 5px;
-  font-size: 1em;
+  font-size: .7em;
   margin-right: 1em;
   margin-left: 2em;
+  text-align: center;
 }
 
 
@@ -27,6 +29,8 @@ h1 {
 
 h1,h2,h3,h4,h5,h6 {
   color: #303030;
+  font-weight: 300;
+  text-align: center;
 }
 
 article h3 {

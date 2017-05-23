@@ -1,0 +1,14 @@
+.event-container {
+  text-decoration: none;
+  padding-top: 1em;
+}
+
+.event {
+  color: gray;
+  text-decoration: none;
+}
+
+.event--active {
+  color: green;
+  text-decoration: none;
+}

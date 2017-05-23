@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { database } from '../firebase'
-import '../css/NewGroup.css'
+import '../css/newgroup.css'
 
 class NewGroup extends Component {
   constructor () {
@@ -34,15 +34,14 @@ class NewGroup extends Component {
     const { name } = this.state 
     return (
       <form className="group-form">
-        <h6>NEW GROUP:</h6>
         <input 
           type="text" 
           value={this.name}
-          placeholder="Group Name"
+          placeholder="New Group"
           onChange={(event) => this.setState({ name: event.target.value })}
         />
         <button onClick={this.handleSubmit} disabled={!name}>
-          Create
+          +
         </button>
       </form>
     )

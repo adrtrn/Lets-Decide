@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { database } from '../firebase'
 
 class NewDestination extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       name: '',
-      election: '',
+      eventID: '',
       successMessage: ''
     }
     this.destinationRef = database.ref('/destinations')
@@ -17,9 +17,9 @@ class NewDestination extends Component {
     event.preventDefault()
     this.destinationRef.push({ 
       name: this.state.name, 
-      election: this.props.election,
+      eventID: this.props.eventID,
     })
-    this.setState({ name: '', election: ''})
+    this.setState({ name: '', eventID: ''})
     this.setState({ successMessage: 'The Suggestion was Successfully Added'})
   }
 
@@ -33,7 +33,7 @@ class NewDestination extends Component {
           placeholder='Destination (required)'
           onChange={(event) => this.setState({ name: event.target.value, successMessage: '' })}
         />
-        <button onClick={this.handleSubmit} disabled={!name}>add</button>
+        <button onClick={this.handleSubmit} disabled={!name}>+</button>
         <p className="success"> { this.state.successMessage } </p>
       </form>
     )

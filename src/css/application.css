@@ -1,0 +1,12 @@
+.application-container {
+  height: 50em;
+}
+
+.events-container {
+  position: absolute;
+  left: 0;
+  width: 25%;
+  height: 50%;
+  text-align: center;
+  border: solid 1px #c9c9c9;
+}

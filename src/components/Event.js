@@ -1,35 +1,46 @@
 import React, { Component } from 'react'
-import NewDestination from './NewDestination'
 import Destinations from './Destinations'
 import { database } from '../firebase'
+import '../css/event.css'
 
 class Event extends Component {
   constructor (props) {
     super(props)
     this.state = {
       destinations: '',
-      eventID: ''
+      eventID: '',
+      isActive: false
     }
     this.destinationsRef = database.ref('/destinations/')
-
+    this.setActive = this.setActive.bind(this)
   }
- // DESTIONATIONS: ONLY GET THE DESTINATION IF IT'S CHILD Event ID IS THE SAME AS THE ELECTION ID CREATED BY FIREBASE
+
   componentDidMount () {
     const { eventID } = this.props
-    this.destinationsRef.orderByChild('event').equalTo(eventID).on('value', (snapshot) => {
+    this.destinationsRef.orderByChild('eventID').equalTo(eventID).on('value', (snapshot) => {
       this.setState({ destinations: snapshot.val() })
     })
+  }
 
+  setActive () {
+    const { isActive } = this.state
+    this.setState({ isActive: !isActive })
   }
 
   render () {
     const { eventID, name } = this.props 
-    const { destinations } = this.state
+    const { destinations, isActive } = this.state
+
     return (
-      <article className="event">
-        <h4>Event: {name}</h4>
-        <NewDestination event={eventID}/>
-        <Destinations destinations={destinations} />
+      <article className="event-container">
+        <a href="#" onClick={this.setActive} className={ isActive ? 'event--active' : 'event'}>{name} </a>
+        { 
+          isActive && 
+            <Destinations 
+              destinations={destinations}
+              eventID={eventID}
+            />
+        }
       </article>
     )
   }
