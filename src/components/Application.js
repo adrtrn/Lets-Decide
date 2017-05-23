@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { auth, database } from '../firebase'
 import Login from './Login'
 import User from './User'
-import NewGroup from './NewGroup'
 import Groups from './Groups'
+import Destinations from './Destinations'
+import '../css/application.css'
 
 
 class Application extends Component {
@@ -28,15 +29,17 @@ class Application extends Component {
   render() {
     const { currentUser, groups } = this.state
     return (
-      <div>
-        <h2>D O G E T H E R</h2>
+      <div className="application-container">
+        <h1>D O G E T H E R</h1>
         { !currentUser && <Login /> }
         { 
           currentUser && 
           <div>
             <User user={currentUser} />
-            <NewGroup user={currentUser} />
-            <Groups groups={groups} user={currentUser}/>
+            <Groups 
+              className='groups-container' 
+              groups={groups} 
+              user={currentUser}/>
           </div>
         }
       </div>

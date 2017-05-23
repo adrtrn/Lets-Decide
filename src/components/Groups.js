@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Group from './Group'
 import map from 'lodash/map'
+import NewGroup from './NewGroup'
 import { database } from '../firebase'
+import '../css/groups.css'
 
 class Groups extends Component {
+
   handleRemove (key) {
     const currentUser = this.props.user
     if (confirm("Are you sure you want to leave this group?")) {
@@ -23,19 +26,23 @@ class Groups extends Component {
   }
 
   render () {
-    const { groups } = this.props 
+    const { groups, user } = this.props 
     return (
-      <div>
-        <h6>GROUPS:</h6>
+      <div className="groups-container">
+        <h3>GROUPS</h3>
+        <NewGroup user={user} />
+        <ul>
         {
           map(groups, (group, key) => {
             return <Group
+              user={user}
               key={key} {...group}
               groupID={key}
               handleRemove={() => this.handleRemove(key)}
             />
           })
         }
+        </ul>
       </div>
     )
   }

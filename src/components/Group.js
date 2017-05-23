@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { database } from '../firebase'
-import NewElection from './NewElection'
-import Elections from './Elections'
+import Events from './Events'
+import '../css/group.css'
 
 class Group extends Component {
   constructor (props) {
@@ -9,10 +9,12 @@ class Group extends Component {
     this.state = {
       name: '',
       members: '',
-      elections: ''
+      events: '',
+      isActive: false
     }
     this.groupRef = database.ref(`/groups/${this.props.groupID}/`)
-    this.electionsRef = database.ref('/elections')
+    this.eventsRef = database.ref('/events')
+    this.setActive = this.setActive.bind(this)
   }
 
   componentDidMount () {
@@ -23,27 +25,34 @@ class Group extends Component {
       this.groupRef.child('members').on('value', (snapshot) => {
         this.setState({ members: snapshot.val() })
       })    
-      this.electionsRef.orderByChild('group').equalTo(groupID).on('value', (snapshot) => {
-        this.setState({ elections: snapshot.val() })
+      this.eventsRef.orderByChild('group').equalTo(groupID).on('value', (snapshot) => {
+        this.setState({ events: snapshot.val() })
       })
     })     
   }
 
-  render () {<div></div>
-    const { handleRemove } = this.props
-    const { members, name, elections } = this.state
+  setActive () {
+    const { isActive } = this.state
+    this.setState({ isActive: !isActive })
+  }
+
+  render () {
+    const { handleRemove, user } = this.props
+    const { name, events, isActive } = this.state
     return (
       <section>
-        <h4>
+        <a href="#" onClick={this.setActive} className={ isActive ? "group--active" : "group"} >
           {name}
-          <button onClick={handleRemove}>Leave Group</button>
-        </h4>
-        <NewElection 
-          group={this.groupRef.key}
-        />
-        <Elections 
-          elections={elections}
-        />
+          <button onClick={handleRemove}>&#9660;</button>
+        </a>
+        { 
+          isActive &&
+          <Events 
+            user={user}
+            group={this.groupRef.key}
+            events={events}
+          /> 
+        }
       </section>
     )
   }

@@ -1,0 +1,9 @@
+.group {
+  color: gray;
+  text-decoration: none;
+}
+
+.group--active {
+  color: black;
+  text-decoration: none;
+}
