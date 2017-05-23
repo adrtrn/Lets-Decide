@@ -3,7 +3,7 @@ import { auth, database } from '../firebase'
 import Login from './Login'
 import User from './User'
 import Groups from './Groups'
-import Events from './Events'
+import Destinations from './Destinations'
 import '../css/application.css'
 
 
@@ -36,7 +36,10 @@ class Application extends Component {
           currentUser && 
           <div>
             <User user={currentUser} />
-            <Groups className='groups-container' groups={groups} user={currentUser}/>
+            <Groups 
+              className='groups-container' 
+              groups={groups} 
+              user={currentUser}/>
           </div>
         }
       </div>

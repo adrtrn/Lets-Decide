@@ -13,7 +13,8 @@ class Events extends Component {
   }
 
   render () {
-    const { events, group } = this.props
+    const { events, group, user } = this.props
+
     return (
       <div className="events-container">
       <h3>EVENTS</h3>
@@ -25,6 +26,7 @@ class Events extends Component {
           return <Event
             key={key} {...event}
             eventID={key}
+            user={user}
           />
         }) 
       }

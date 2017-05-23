@@ -35,6 +35,7 @@ class Groups extends Component {
         {
           map(groups, (group, key) => {
             return <Group
+              user={user}
               key={key} {...group}
               groupID={key}
               handleRemove={() => this.handleRemove(key)}

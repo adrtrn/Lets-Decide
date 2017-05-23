@@ -37,7 +37,7 @@ class Group extends Component {
   }
 
   render () {
-    const { handleRemove } = this.props
+    const { handleRemove, user } = this.props
     const { name, events, isActive } = this.state
     return (
       <section>
@@ -48,6 +48,7 @@ class Group extends Component {
         { 
           isActive &&
           <Events 
+            user={user}
             group={this.groupRef.key}
             events={events}
           /> 

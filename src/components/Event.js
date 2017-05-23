@@ -28,7 +28,7 @@ class Event extends Component {
   }
 
   render () {
-    const { eventID, name } = this.props 
+    const { eventID, name, user } = this.props 
     const { destinations, isActive } = this.state
 
     return (
@@ -39,6 +39,7 @@ class Event extends Component {
             <Destinations 
               destinations={destinations}
               eventID={eventID}
+              user={user}
             />
         }
       </article>
