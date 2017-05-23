@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import Destination from './Destination'
+import NewDestination from './NewDestination'
 import map from 'lodash/map'
+import '../css/destinations.css'
 
 class Destinations extends Component {
-  constructor (props) {
-    super()
-  }
-
   render () {
-    const { destinations } = this.props
+    const { destinations, eventID } = this.props
     return (
-      <section className='Destinations-Container'>
-        <h6>Suggestions:</h6>
+      <section className='destinations-container'>
+        <h1>DESTINATIONS</h1>
+        <NewDestination 
+          eventID={eventID}
+        />
         {
           map(destinations, (destination, key) => {
             return <Destination
