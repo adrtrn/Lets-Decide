@@ -27,9 +27,9 @@ class Groups extends Component {
 
   render () {
     const { groups, user } = this.props 
+
     return (
       <div className="groups-container">
-        <h3>GROUPS</h3>
         <NewGroup user={user} />
         <ul>
         {
@@ -39,6 +39,7 @@ class Groups extends Component {
               key={key} {...group}
               groupID={key}
               handleRemove={() => this.handleRemove(key)}
+              setActive={() => this.setActive(key)}
             />
           })
         }
