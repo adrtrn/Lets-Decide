@@ -34,7 +34,7 @@ class User extends Component {
           <img src={user.photoURL} alt={user.displayName}/>
         </div>
         <h3 className="user-name">{user.displayName}</h3>
-        <button onClick={() => auth.signOut()}>&#9660;</button>
+        <button className="user-menu" onClick={() => auth.signOut()}>&#9660;</button>
       </div>
     )
   }

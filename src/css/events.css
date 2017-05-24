@@ -1,9 +1,5 @@
 .events-container {
-  position: absolute;
-  margin-top: 15em;
-  left: 0;
-  width: 25%;
-  height: 50%;
-  text-align: center;
-  border: solid 1px #c9c9c9;
+  margin-left: -3em;
+  font-size: 12pt;
+  padding: 20px;
 }

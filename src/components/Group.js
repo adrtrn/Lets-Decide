@@ -32,8 +32,8 @@ class Group extends Component {
   }
 
   setActive () {
-    const { isActive } = this.state
-    this.setState({ isActive: !isActive })
+    const { groupID } = this.props
+    this.setState({ isActive: !this.state.isActive })
   }
 
   render () {
@@ -43,7 +43,6 @@ class Group extends Component {
       <section>
         <a href="#" onClick={this.setActive} className={ isActive ? "group--active" : "group"} >
           {name}
-          <button onClick={handleRemove}>&#9660;</button>
         </a>
         { 
           isActive &&

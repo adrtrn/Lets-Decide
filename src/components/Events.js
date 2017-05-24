@@ -17,19 +17,21 @@ class Events extends Component {
 
     return (
       <div className="events-container">
-      <h3>EVENTS</h3>
-      {
-        group && <NewEvent group={group}/>      
-      }
-      {
-        map(events, (event, key) => {
-          return <Event
-            key={key} {...event}
-            eventID={key}
-            user={user}
-          />
-        }) 
-      }
+        <ul>
+        {
+          map(events, (event, key) => {
+            return <Event
+              key={key} {...event}
+              eventID={key}
+              user={user}
+            />
+          }) 
+        }
+        {
+          !events && <p>No events</p>
+        }
+        <NewEvent group={group} />
+        </ul>
       </div>
     )
   }

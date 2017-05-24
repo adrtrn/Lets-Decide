@@ -1,6 +1,6 @@
 .event-container {
   text-decoration: none;
-  padding-top: 1em;
+  padding: .3em;
 }
 
 .event {
@@ -9,6 +9,6 @@
 }
 
 .event--active {
-  color: green;
+  color: black;
   text-decoration: none;
 }
